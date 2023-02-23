@@ -1,0 +1,32 @@
+server {
+    charset utf-8;
+
+	listen 443 ssl;
+	server_name 127.0.0.1;
+
+	ssl_certificate /etc/nginx/ssl/inception.crt;
+	ssl_certificate_key /etc/nginx/ssl/inception.key;
+	ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    #ssl_ciphers ECDH+AESGCM:ECDH+AES256-CBC:ECDH+AES128-CBC:DH+3DES:!ADH:!AECDH:!MD5;
+
+	root /var/www/html;
+	index index.php index.html index.htm;
+
+	location / {
+		try_files $uri $uri/ =404;
+        index index.php index.html;
+        autoindex on;
+	}
+
+	location ~ \.php$ {
+        try_files $uri =404;
+		fastcgi_pass wordpress:9000;
+		include fastcgi_params;
+		fastcgi_index index.php;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+		fastcgi_param PATH_INFO $fastcgi_path_info;
+	}
+}
+
