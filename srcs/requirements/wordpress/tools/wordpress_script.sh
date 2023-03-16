@@ -21,7 +21,7 @@ if [ ! -f /var/www/html/wordpress/wp-config.php ]; then
 	#	--dbhost=$SQL_HOST \
 	#	--path=/var/www/html/wordpress;
 	wp core install --allow-root \
-		--url=$DOMAIN_NAME/wordpress \
+		--url=$DOMAIN_NAME \
 		--title=$WP_TITLE \
 		--admin_user=$WP_ADMIN_USR \
 		--admin_password=$WP_ADMIN_PWD \

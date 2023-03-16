@@ -10,7 +10,7 @@ server {
     ssl_prefer_server_ciphers on;
     #ssl_ciphers ECDH+AESGCM:ECDH+AES256-CBC:ECDH+AES128-CBC:DH+3DES:!ADH:!AECDH:!MD5;
 
-	root /var/www/html;
+	root /var/www/html/wordpress;
 	index index.php index.html index.htm;
 
 	location / {

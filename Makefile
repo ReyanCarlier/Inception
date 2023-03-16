@@ -1,7 +1,9 @@
 all: up
 
 up :
-	cd srcs \
+	mkdir -p /home/recarlie/data/mysql \
+	mkdir -p /home/recarlie/data/wordpress \
+	&& cd srcs \
 	&& sudo service docker restart \
 	&& sudo docker-compose -f docker-compose.yml build \
 	&& sudo docker-compose -f docker-compose.yml up -d
